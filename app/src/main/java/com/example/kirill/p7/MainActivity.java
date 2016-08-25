@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,22 +28,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lvMember=(ListView) findViewById(R.id.listview_member);
-        mDBHelper=new DataBaseHelper(this);
-        File database = getApplicationContext().getDatabasePath(DataBaseHelper.DBNAME);
-        if (false==database.exists()){
-            mDBHelper.getReadableDatabase();
-            if (openDatabase(this)){
-                Toast.makeText(this,"Database is copied successfully",Toast.LENGTH_SHORT).show();
-            }else
-            {
-                Toast.makeText(this,"Data copy error",Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
-        mMemberList=mDBHelper.getListMember();
-        adapter=new ListMemberAdapter(this,mMemberList);
-        lvMember.setAdapter(adapter);
+
 
     }
 
@@ -66,5 +52,24 @@ public class MainActivity extends Activity {
              return false;
          }
         return true;
+    }
+
+    public void onClick(View view) {
+        lvMember=(ListView) findViewById(R.id.listview_member);
+        mDBHelper=new DataBaseHelper(this);
+        File database = getApplicationContext().getDatabasePath(DataBaseHelper.DBNAME);
+        if (false==database.exists()){
+            mDBHelper.getReadableDatabase();
+            if (openDatabase(this)){
+                Toast.makeText(this,"Database is copied successfully",Toast.LENGTH_SHORT).show();
+            }else
+            {
+                Toast.makeText(this,"Data copy error",Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        mMemberList=mDBHelper.getListMember();
+        adapter=new ListMemberAdapter(this,mMemberList);
+        lvMember.setAdapter(adapter);
     }
 }
