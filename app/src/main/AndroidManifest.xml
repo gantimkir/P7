@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".reserv"></activity>
+        <activity android:name=".reserv" />
+        <activity android:name=".UserActivity"></activity>
     </application>
 
 </manifest>

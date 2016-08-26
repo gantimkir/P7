@@ -9,7 +9,14 @@
         android:layout_height="wrap_content"
         android:text="Connect to DB"
         android:id="@+id/button"
-        android:layout_gravity="center_horizontal"
+        android:onClick="onClick"
+        android:layout_gravity="left" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New record"
+        android:id="@+id/buttonNewRecord"
         android:onClick="onClick" />
 
     <ListView

@@ -20,7 +20,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DBNAME="sample.db";
     public static final String DBLOCATION="/data/data/com.example.kirill.p7/databases/";
     private static final int SCHEMA = 1; // версия базы данных
-    static final String TABLE = "TEST";
+    public static final String TABLE = "TEST";
 
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
@@ -28,7 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_JOB = "job";
 
     private Context mContext;
-    private SQLiteDatabase mDatabase;
+    public SQLiteDatabase mDatabase;
 
     public DataBaseHelper(Context context){
         super(context,DBNAME,null,SCHEMA);
