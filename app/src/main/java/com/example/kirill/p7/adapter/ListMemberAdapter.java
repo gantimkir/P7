@@ -50,6 +50,6 @@ public class ListMemberAdapter extends BaseAdapter {
         tvAge.setText(String.valueOf(mMemberList.get(i).getAge())+" years");
         tvJob.setText(mMemberList.get(i).getJob());
 
-        return null;
+        return v;
     }
 }

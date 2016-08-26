@@ -28,48 +28,24 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-    }
-
-    private boolean openDatabase (Context context) {
-         try {
-
-             InputStream inputStream=context.getAssets().open(DataBaseHelper.DBNAME);
-             String outFileName=DataBaseHelper.DBLOCATION+DataBaseHelper.DBNAME;
-             OutputStream outputStream=new FileOutputStream(outFileName);
-             byte[] buff = new byte[1024];
-             int length=0;
-             while ((length=inputStream.read(buff))>0) {
-                 outputStream.write(buff,0,length);
-                 outputStream.flush();
-                 outputStream.close();
-                 Log.w("MainActivity","DB copied");
-                 return true;
-             }
-         } catch (Exception e) {
-            e.printStackTrace();
-             return false;
-         }
-        return true;
     }
 
     public void onClick(View view) {
+        mDBHelper = new DataBaseHelper(getApplicationContext());
+        // создаем базу данных
+        mDBHelper.create_db();
+        Toast.makeText(this,"!!!",Toast.LENGTH_LONG).show();
         lvMember=(ListView) findViewById(R.id.listview_member);
-        mDBHelper=new DataBaseHelper(this);
-        File database = getApplicationContext().getDatabasePath(DataBaseHelper.DBNAME);
-        if (false==database.exists()){
-            mDBHelper.getReadableDatabase();
-            if (openDatabase(this)){
-                Toast.makeText(this,"Database is copied successfully",Toast.LENGTH_SHORT).show();
-            }else
-            {
-                Toast.makeText(this,"Data copy error",Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
         mMemberList=mDBHelper.getListMember();
         adapter=new ListMemberAdapter(this,mMemberList);
         lvMember.setAdapter(adapter);
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        // Закрываем подключения
+        mDBHelper.closeDatabase();
+        mDBHelper.close();
     }
 }
