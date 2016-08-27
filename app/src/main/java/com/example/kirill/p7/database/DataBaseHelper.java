@@ -57,6 +57,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super.close();
     }
 
+    public boolean isOpenDatabase(){
+        if (mDatabase==null) {
+            return false;
+        }
+        return true;
+    }
+
     public List<Member> getListMember(){
         Member member=null;
         List<Member> memberList=new ArrayList<>();
