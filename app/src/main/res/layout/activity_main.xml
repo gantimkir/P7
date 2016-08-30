@@ -24,8 +24,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Is db open"
-        android:id="@+id/buttonIsDatabaseOpen"
+        android:text="New Activity 1"
+        android:id="@+id/buttonNewActivity1"
         android:onClick="onClick"
         android:layout_gravity="center_horizontal"
         android:layout_alignTop="@+id/button"
@@ -41,5 +41,73 @@
         android:divider="#d1d1d1"
         android:dividerHeight="10dp"
 
-        android:layout_below="@+id/button"></ListView>
+        android:layout_below="@+id/buttonGetResult"></ListView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go"
+        android:id="@+id/buttonAsync1"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignLeft="@+id/button"
+        android:layout_below="@+id/button"
+        android:layout_alignRight="@+id/button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="__"
+        android:id="@+id/textViewInfo"
+        android:layout_alignTop="@+id/buttonAsync1"
+        android:layout_toEndOf="@+id/buttonNewRecord"
+        android:layout_alignLeft="@+id/buttonNewActivity1"
+        android:layout_alignRight="@+id/buttonNewActivity1"
+        android:layout_alignBottom="@+id/buttonAsync1" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarHor"
+        android:layout_above="@+id/listview_member"
+        android:layout_toEndOf="@+id/buttonAsync1"
+        android:layout_alignTop="@+id/buttonGetResult"
+        android:max="14" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Result"
+        android:id="@+id/buttonGetResult"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal"
+        android:layout_toStartOf="@+id/textViewInfo"
+        android:layout_marginEnd="39dp"
+        android:layout_alignLeft="@+id/buttonAsync1"
+        android:layout_alignRight="@+id/buttonAsync1"
+        android:layout_below="@+id/buttonAsync1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/buttonCancel"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignTop="@+id/buttonGetResult"
+        android:layout_toRightOf="@+id/buttonGetResult" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:id="@+id/buttonStatus"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/buttonCancel"
+        android:layout_alignLeft="@+id/buttonNewActivity1"
+        android:layout_alignEnd="@+id/textViewInfo" />
+
 </RelativeLayout>
